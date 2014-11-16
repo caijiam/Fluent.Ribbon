@@ -481,4 +481,11 @@
                      Color="#FFD4E1F1" />
 
     <Color x:Key="RibbonTabControlGradientColor">#D8F9F7FA</Color>
+
+    <SolidColorBrush x:Key="MainGridBackgroundWhenDefaultWindowsChrome"
+                     Color="#BDD1E9" />
+
+    <!--<SolidColorBrush x:Key="MainGridBackgroundWhenDefaultWindowsChrome"
+                     Color="#F0F6FD" />-->
+
 </ResourceDictionary>

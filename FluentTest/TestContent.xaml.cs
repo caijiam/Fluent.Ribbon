@@ -179,6 +179,39 @@
             }
 
             window.DontUseDwm = this.DontUseDwm.IsChecked.GetValueOrDefault();
+
+            //Make sure these settings are used on the same time
+            if (window.UseDefaultWindowsChrome && window.DontUseDwm)
+            {
+                window.UseDefaultWindowsChrome = false;
+                UseDefaultWindowsChrome.IsChecked = false;
+            }
+        }
+
+        private void HandleUseDefaultWindowsChromeClick(object sender, RoutedEventArgs e)
+        {
+            var control = sender as UIElement;
+
+            if (control == null)
+            {
+                return;
+            }
+
+            var window = Window.GetWindow(control) as RibbonWindow;
+
+            if (window == null)
+            {
+                return;
+            }
+
+            window.UseDefaultWindowsChrome = this.UseDefaultWindowsChrome.IsChecked.GetValueOrDefault();
+
+            //Make sure these settings are used on the same time
+            if (window.UseDefaultWindowsChrome && window.DontUseDwm)
+            {
+                window.DontUseDwm = false;
+                DontUseDwm.IsChecked = false;
+            }
         }
 
         #endregion Theming

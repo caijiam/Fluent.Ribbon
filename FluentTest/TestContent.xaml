@@ -319,6 +319,8 @@
                                    SizeDefinition="Middle">Blue</Fluent:Button>
                     <Fluent:CheckBox Name="DontUseDwm" 
                                      Click="HandleDontUseDwmClick">Don't use DWM</Fluent:CheckBox>
+                    <Fluent:CheckBox Name="UseDefaultWindowsChrome" ToolTip="Use the default windows chrome instead of the custom one. Enabling this removes the ability to use the quick launch bar."
+                                     Click="HandleUseDefaultWindowsChromeClick">Use default windows chrome</Fluent:CheckBox>
                 </Fluent:RibbonGroupBox>
 
                 <Fluent:RibbonGroupBox Icon="pack://application:,,,/FluentTest;component/Images/Default.png"

@@ -158,6 +158,21 @@ namespace Fluent
         public static readonly DependencyProperty CanUseDwmProperty = CanUseDwmPropertyKey.DependencyProperty;
 
         /// <summary>
+        /// Using a DependencyProperty as the backing store for UseDefaultWindowsChrome.  This enables animation, styling, binding, etc...
+        /// </summary>
+        public static readonly DependencyProperty UseDefaultWindowsChromeProperty =
+            DependencyProperty.Register("UseDefaultWindowsChrome", typeof(bool), typeof(RibbonWindow), new PropertyMetadata(false, OnUseDefaultWindowsChromeChanged));
+
+        /// <summary>
+        ///  Gets or sets whether default windows chrome should be used.
+        /// </summary>
+        public bool UseDefaultWindowsChrome
+        {
+            get { return (bool)GetValue(UseDefaultWindowsChromeProperty); }
+            set { SetValue(UseDefaultWindowsChromeProperty, value); }
+        }
+
+        /// <summary>
         /// Gets or sets whether icon is visible
         /// </summary>
         public bool IsIconVisible
@@ -308,6 +323,18 @@ namespace Fluent
             window.UpdateCanUseDwm();
         }
 
+        private static void OnUseDefaultWindowsChromeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = d as RibbonWindow;
+
+            if (window == null)
+            {
+                return;
+            }
+
+            window.UpdateWindowChrome();
+        }
+
         // Size change to collapse ribbon
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -334,6 +361,12 @@ namespace Fluent
 
         private void UpdateWindowChrome()
         {
+            if (UseDefaultWindowsChrome)
+            {
+                WindowChrome.SetWindowChrome(this, null);
+                return;
+            }
+
             var windowChrome = WindowChrome.GetWindowChrome(this);
 
             if (windowChrome == null)

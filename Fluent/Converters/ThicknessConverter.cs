@@ -21,10 +21,21 @@
         /// <param name="values">The array of values that the source bindings in the <see cref="T:System.Windows.Data.MultiBinding"/> produces. The value <see cref="F:System.Windows.DependencyProperty.UnsetValue"/> indicates that the source binding has no value to provide for conversion.</param><param name="targetType">The type of the binding target property.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            return new Thickness(System.Convert.ToDouble(values[0]),
-                                       System.Convert.ToDouble(values[1]),
-                                       System.Convert.ToDouble(values[2]),
-                                       System.Convert.ToDouble(values[3]));
+            int offset = 0;
+            if (values[0] is bool)
+            {
+                if ((bool)values[0])
+                {
+                    return new Thickness(0);
+                }
+
+                offset = 1;
+            }
+
+            return new Thickness(System.Convert.ToDouble(values[offset + 0]),
+                                       System.Convert.ToDouble(values[offset + 1]),
+                                       System.Convert.ToDouble(values[offset + 2]),
+                                       System.Convert.ToDouble(values[offset + 3]));
         }
 
         /// <summary>

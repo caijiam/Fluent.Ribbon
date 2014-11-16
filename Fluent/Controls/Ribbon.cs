@@ -295,8 +295,14 @@ namespace Fluent
             showQuickAccessToolbarBelowTheRibbonMenuItem.Visibility = Visibility.Collapsed;
             showQuickAccessToolbarAboveTheRibbonMenuItem.Visibility = Visibility.Collapsed;
 
+            RibbonWindow ribbonWindow = ribbon.ownerWindow as RibbonWindow;
+
             // If quick access toolbar is visible show 
-            if (ribbon.IsQuickAccessToolBarVisible)
+            if (ribbonWindow != null && ribbonWindow.UseDefaultWindowsChrome)
+            {
+                secondSeparator.Visibility = Visibility.Collapsed;
+            }
+            else if (ribbon.IsQuickAccessToolBarVisible)
             {
                 // Set quick access position menu items visibility
                 if (ribbon.CanQuickAccessLocationChanging)

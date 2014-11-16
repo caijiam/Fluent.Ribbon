@@ -8,6 +8,11 @@
                     xmlns:Fluent="clr-namespace:Fluent"
                     xmlns:Behaviours="clr-namespace:Fluent.Metro.Behaviours">
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <Fluent:BooleanToVisibilityConverter x:Key="BooleanToVisibilityInvertedConverter" Inverted="True" Collapse="True" />
+    <Fluent:BooleanThicknessConverter x:Key="BooleanToContentThicknesssConverter"
+                                         ThicknessWhenTrue="0"
+                                        ThicknessWhenFalse="8,1,8,8"
+                                      />
     <Fluent:IconConverter x:Key="IconConvert"/>
   <BitmapImage x:Key="ImageCaptionButtonClose" UriSource="pack://application:,,,/Fluent;component/Themes/Office2010/Images/CaptionButtonClose.png" PresentationOptions:Freeze="True"/>	
     <BitmapImage x:Key="ImageCaptionButtonMinimize" UriSource="pack://application:,,,/Fluent;component/Themes/Office2010/Images/CaptionButtonMinimize.png" PresentationOptions:Freeze="True"/>
@@ -49,24 +54,36 @@
   </Style>
   <ControlTemplate x:Key="DwmRibbonWindowControlTemplate" TargetType="{x:Type Fluent:RibbonWindow}">
     <Grid>
-      <AdornerDecorator x:Name="adornerDecorator" Margin="0">
-        <Grid x:Name="PART_MainGrid" Margin="0" Background="{DynamicResource TransparentBrush}" VerticalAlignment="Stretch">
-          <Grid x:Name="PART_TitleBar" Margin="{TemplateBinding ResizeBorderThickness}" VerticalAlignment="Top" Height="{TemplateBinding CaptionHeight}" Background="{DynamicResource TransparentBrush}" IsHitTestVisible="True"/>
-          <Rectangle x:Name="rectangle" Stroke="{x:Null}" HorizontalAlignment="Left" Width="35" StrokeThickness="0" Margin="15,0,0,1" VerticalAlignment="Top" Height="50" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientLeftBrush}" SnapsToDevicePixels="True"/>
-          <Rectangle x:Name="rectangle1" Stroke="{x:Null}" HorizontalAlignment="Right" Width="35" StrokeThickness="0" Margin="0,0,15.1,1" Height="50" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientRightBrush}" SnapsToDevicePixels="True"/>
-          <Rectangle x:Name="rectangle2" Stroke="{x:Null}" HorizontalAlignment="Stretch" Width="Auto" StrokeThickness="0" Height="50" Margin="50,0,50,1" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientCenterBrush}" SnapsToDevicePixels="True"/>
+        <Border Background="{DynamicResource MainGridBackgroundWhenDefaultWindowsChrome}"
+              Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityConverter}}"
+              />
+        <AdornerDecorator x:Name="adornerDecorator" Margin="0">
+            <Grid x:Name="PART_MainGrid" Margin="0" Background="{DynamicResource TransparentBrush}" VerticalAlignment="Stretch">
+                <Grid x:Name="PART_TitleBar" Margin="{TemplateBinding ResizeBorderThickness}" VerticalAlignment="Top" Height="{TemplateBinding CaptionHeight}" Background="{DynamicResource TransparentBrush}" IsHitTestVisible="True"/>
+                <Rectangle x:Name="rectangle" Stroke="{x:Null}" HorizontalAlignment="Left" Width="35" StrokeThickness="0" Margin="15,0,0,1" VerticalAlignment="Top" Height="50" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientLeftBrush}" SnapsToDevicePixels="True"
+                            Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
+                <Rectangle x:Name="rectangle1" Stroke="{x:Null}" HorizontalAlignment="Right" Width="35" StrokeThickness="0" Margin="0,0,15.1,1" Height="50" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientRightBrush}" SnapsToDevicePixels="True"
+                            Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
+                <Rectangle x:Name="rectangle2" Stroke="{x:Null}" HorizontalAlignment="Stretch" Width="Auto" StrokeThickness="0" Height="50" Margin="50,0,50,1" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientCenterBrush}" SnapsToDevicePixels="True"
+                            Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
 
-          <Grid x:Name="grid" Background="{TemplateBinding Background}" Margin="{TemplateBinding GlassBorderThickness}"/>
-          <StackPanel Background="Transparent" x:Name="PART_IconImage" Margin="8,7,8,8" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image x:Name="PART_Icon" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Icon, Converter={StaticResource IconConvert}, RelativeSource={RelativeSource TemplatedParent}}" Width="16" SnapsToDevicePixels="True"
-                               Visibility="{TemplateBinding IsIconVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
-          </StackPanel>
-          <ContentPresenter Margin="8,1,8,8" x:Name="contentPresenter"/>
-          <ResizeGrip x:Name="PART_ResizeGrip" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
-                VerticalAlignment="Bottom" Focusable="False" Margin="0,0,5.5,5.5" Background="Transparent"
-                Visibility="Collapsed"/>
-        </Grid>
-      </AdornerDecorator>
+                <Grid x:Name="grid" Background="{TemplateBinding Background}" Margin="{TemplateBinding GlassBorderThickness}"/>
+                <StackPanel Background="Transparent"
+                            x:Name="PART_IconImage"
+                            Margin="8,7,8,8"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+                    <Image x:Name="PART_Icon" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Icon, Converter={StaticResource IconConvert}, RelativeSource={RelativeSource TemplatedParent}}" Width="16" SnapsToDevicePixels="True"
+                            Visibility="{TemplateBinding IsIconVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                </StackPanel>
+                <ContentPresenter Margin="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToContentThicknesssConverter}}" x:Name="contentPresenter"/>
+                <ResizeGrip x:Name="PART_ResizeGrip" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
+            VerticalAlignment="Bottom" Focusable="False" Margin="0,0,5.5,5.5" Background="Transparent"
+            Visibility="Collapsed"/>
+            </Grid>
+        </AdornerDecorator>
     </Grid>
     <ControlTemplate.Triggers>
       <MultiTrigger>
@@ -436,7 +453,12 @@
                      Value="True">
                 <Setter Property="Template"
                         Value="{DynamicResource DwmRibbonWindowControlTemplate}" />
+                </Trigger>
+            <Trigger Property="UseDefaultWindowsChrome"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{DynamicResource DwmRibbonWindowControlTemplate}" />
             </Trigger>
-        </Style.Triggers>
+            </Style.Triggers>
     </Style>    
 </ResourceDictionary>
