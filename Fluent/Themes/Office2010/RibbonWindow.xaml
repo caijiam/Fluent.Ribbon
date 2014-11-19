@@ -57,9 +57,9 @@
         <Border Background="{DynamicResource MainGridBackgroundWhenDefaultWindowsChrome}"
               Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityConverter}}"
               />
-        <AdornerDecorator x:Name="adornerDecorator" Margin="0">
-            <Grid x:Name="PART_MainGrid" Margin="0" Background="{DynamicResource TransparentBrush}" VerticalAlignment="Stretch">
-                <Grid x:Name="PART_TitleBar" Margin="{TemplateBinding ResizeBorderThickness}" VerticalAlignment="Top" Height="{TemplateBinding CaptionHeight}" Background="{DynamicResource TransparentBrush}" IsHitTestVisible="True"/>
+      <AdornerDecorator x:Name="adornerDecorator" Margin="0">
+        <Grid x:Name="PART_MainGrid" Margin="0" Background="{DynamicResource TransparentBrush}" VerticalAlignment="Stretch">
+          <Grid x:Name="PART_TitleBar" Margin="{TemplateBinding ResizeBorderThickness}" VerticalAlignment="Top" Height="{TemplateBinding CaptionHeight}" Background="{DynamicResource TransparentBrush}" IsHitTestVisible="True"/>
                 <Rectangle x:Name="rectangle" Stroke="{x:Null}" HorizontalAlignment="Left" Width="35" StrokeThickness="0" Margin="15,0,0,1" VerticalAlignment="Top" Height="50" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientLeftBrush}" SnapsToDevicePixels="True"
                             Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
                 <Rectangle x:Name="rectangle1" Stroke="{x:Null}" HorizontalAlignment="Right" Width="35" StrokeThickness="0" Margin="0,0,15.1,1" Height="50" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientRightBrush}" SnapsToDevicePixels="True"
@@ -67,7 +67,7 @@
                 <Rectangle x:Name="rectangle2" Stroke="{x:Null}" HorizontalAlignment="Stretch" Width="Auto" StrokeThickness="0" Height="50" Margin="50,0,50,1" VerticalAlignment="Top" IsHitTestVisible="False" Fill="{DynamicResource RibbonTabControlTopGradientCenterBrush}" SnapsToDevicePixels="True"
                             Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
 
-                <Grid x:Name="grid" Background="{TemplateBinding Background}" Margin="{TemplateBinding GlassBorderThickness}"/>
+          <Grid x:Name="grid" Background="{TemplateBinding Background}" Margin="{TemplateBinding GlassBorderThickness}"/>
                 <StackPanel Background="Transparent"
                             x:Name="PART_IconImage"
                             Margin="8,7,8,8"
@@ -75,15 +75,16 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
-                    <Image x:Name="PART_Icon" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Icon, Converter={StaticResource IconConvert}, RelativeSource={RelativeSource TemplatedParent}}" Width="16" SnapsToDevicePixels="True"
-                            Visibility="{TemplateBinding IsIconVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                </StackPanel>
-                <ContentPresenter Margin="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToContentThicknesssConverter}}" x:Name="contentPresenter"/>
-                <ResizeGrip x:Name="PART_ResizeGrip" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
-            VerticalAlignment="Bottom" Focusable="False" Margin="0,0,5.5,5.5" Background="Transparent"
-            Visibility="Collapsed"/>
-            </Grid>
-        </AdornerDecorator>
+            <Image x:Name="PART_Icon" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Icon, Converter={StaticResource IconConvert}, RelativeSource={RelativeSource TemplatedParent}}" Width="16" SnapsToDevicePixels="True"
+                               Visibility="{TemplateBinding IsIconVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+          </StackPanel>
+          <!--<ContentPresenter Margin="8,1,8,8" x:Name="PART_ContentPresenter"/>-->
+          <ContentPresenter Margin="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToContentThicknesssConverter}}" x:Name="PART_ContentPresenter"/>
+          <ResizeGrip x:Name="PART_ResizeGrip" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
+                VerticalAlignment="Bottom" Focusable="False" Margin="0,0,5.5,5.5" Background="Transparent"
+                Visibility="Collapsed"/>
+        </Grid>
+      </AdornerDecorator>
     </Grid>
     <ControlTemplate.Triggers>
       <MultiTrigger>
@@ -96,7 +97,7 @@
       <Trigger Property="WindowState" Value="Maximized">
         <Setter Property="Margin" TargetName="PART_IconImage" Value="0,4,0,0"/>
         <Setter Property="Margin" TargetName="adornerDecorator" Value="0"/>
-        <Setter Property="Margin" TargetName="contentPresenter" Value="0,0,0,0"/>
+        <Setter Property="Margin" TargetName="PART_ContentPresenter" Value="0,0,0,0"/>
         <Setter Property="Margin" TargetName="rectangle" Value="15,4,0,1"/>
         <Setter Property="Margin" TargetName="rectangle1" Value="0,4,15.1,1"/>
         <Setter Property="Margin" TargetName="rectangle2" Value="50,4,50,1"/>
@@ -132,7 +133,7 @@
                 <Grid x:Name="grid" Background="{TemplateBinding Background}"/>
               </Border>
             </Border>
-            <ContentPresenter Margin="8,1,8,8" x:Name="contentPresenter"/>
+            <ContentPresenter Margin="8,1,8,8" x:Name="PART_ContentPresenter"/>
             <ResizeGrip x:Name="PART_ResizeGrip" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
         VerticalAlignment="Bottom" Focusable="False" Margin="0,0,5.5,5.5"
         Cursor="SizeNWSE" Visibility="Collapsed"/>
@@ -160,7 +161,7 @@
         <Setter Property="BorderThickness" TargetName="border2" Value="0,0,0,0"/>
         <Setter Property="CornerRadius" TargetName="border2" Value="0,0,0,0"/>
         <Setter Property="Margin" TargetName="PART_WindowCommands" Value="0,0,0,0"/>
-        <Setter Property="Margin" TargetName="contentPresenter" Value="0,0,0,0"/>
+        <Setter Property="Margin" TargetName="PART_ContentPresenter" Value="0,0,0,0"/>
         <Setter Property="Height" TargetName="border2" Value="54"/>
                 <Setter Property="Margin"
                         TargetName="border4"
@@ -453,12 +454,12 @@
                      Value="True">
                 <Setter Property="Template"
                         Value="{DynamicResource DwmRibbonWindowControlTemplate}" />
-                </Trigger>
+            </Trigger>
             <Trigger Property="UseDefaultWindowsChrome"
                      Value="True">
                 <Setter Property="Template"
                         Value="{DynamicResource DwmRibbonWindowControlTemplate}" />
             </Trigger>
-            </Style.Triggers>
+        </Style.Triggers>
     </Style>    
 </ResourceDictionary>
