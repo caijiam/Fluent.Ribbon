@@ -3,7 +3,8 @@
                     xmlns:Fluent="clr-namespace:Fluent"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:Converters="clr-namespace:Fluent.Converters" xmlns:internal="clr-namespace:Fluent.Internal"
+                    xmlns:Converters="clr-namespace:Fluent.Converters"
+                    xmlns:internal="clr-namespace:Fluent.Internal"
                     mc:Ignorable="d">
     <ControlTemplate x:Key="RibbonControlTemplate"
                      TargetType="{x:Type Fluent:Ribbon}">
@@ -19,24 +20,25 @@
                                    Style="{DynamicResource RibbonTitleBarStyle}"
                                    Margin="36,0,113,0"
                                    VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"
                                    IsCollapsed="{TemplateBinding IsCollapsed}">
                 <Fluent:RibbonTitleBar.Header>
                     <TextBlock x:Name="PART_Title"
-                                Margin="-2,0"
-                                VerticalAlignment="Center"
-                                d:LayoutOverrides="Width"
-                                HorizontalAlignment="Center"
-                                Text="{Binding Path=Title,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                Foreground="Black"
-                                TextWrapping="NoWrap"
-                                TextTrimming="CharacterEllipsis" />
+                               Margin="-2,0"
+                               VerticalAlignment="Center"
+                               d:LayoutOverrides="Width"
+                               HorizontalAlignment="Center"
+                               Text="{Binding Path=Title,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                               Foreground="Black"
+                               TextWrapping="NoWrap"
+                               TextTrimming="CharacterEllipsis" />
                 </Fluent:RibbonTitleBar.Header>
             </Fluent:RibbonTitleBar>
 
             <Fluent:RibbonTabControl Menu="{TemplateBinding Menu}"
                                      Style="{DynamicResource RibbonTabControlStyle}"
                                      x:Name="PART_RibbonTabControl"
-                                     Focusable="False"                                     
+                                     Focusable="False"
                                      ContextMenu="{Binding ContextMenu, ElementName=PART_LayoutRoot}">
                 <Fluent:RibbonTabControl.Margin>
                     <MultiBinding Converter="{x:Static Converters:StaticConverters.ThicknessConverter}">
@@ -61,7 +63,7 @@
                                                HorizontalAlignment="Left"
                                                Focusable="False" />
                 </ContentControl>
-            </Border>           
+            </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsQuickAccessToolBarVisible"
@@ -80,7 +82,7 @@
                         Value="Collapsed" />
                 <Setter Property="Visibility"
                         TargetName="border"
-                        Value="Collapsed" />             
+                        Value="Collapsed" />
             </Trigger>
             <Trigger Property="ShowQuickAccessToolBarAboveRibbon"
                      Value="True">
@@ -114,13 +116,13 @@
                 Value="False" />
         <Setter Property="Fluent:FrameworkHelper.UseLayoutRounding"
                 Value="True" />
-        <Setter Property="FontSize" 
+        <Setter Property="FontSize"
                 Value="{DynamicResource {x:Static SystemFonts.MenuFontSizeKey}}" />
-        <Setter Property="FontFamily" 
+        <Setter Property="FontFamily"
                 Value="{DynamicResource {x:Static SystemFonts.MenuFontFamilyKey}}" />
-        <Setter Property="FontStyle" 
+        <Setter Property="FontStyle"
                 Value="{DynamicResource {x:Static SystemFonts.MenuFontStyleKey}}" />
-        <Setter Property="FontWeight" 
+        <Setter Property="FontWeight"
                 Value="{DynamicResource {x:Static SystemFonts.MenuFontWeightKey}}" />
     </Style>
 </ResourceDictionary>

@@ -22,9 +22,7 @@ using System.Windows.Media;
 namespace Fluent
 {
     using System.Threading;
-#if !NET35
     using System.Threading.Tasks;
-#endif
     using Fluent.Extensions;
 
     /// <summary>
@@ -114,7 +112,6 @@ namespace Fluent
                 }
                 else
                 {
-#if !NET35
                     if (backstage.HideAnimationDuration.HasTimeSpan)
                     {
                         var timespan = backstage.HideAnimationDuration.TimeSpan;
@@ -130,9 +127,6 @@ namespace Fluent
                     {
                         backstage.Hide();
                     }
-#else
-                backstage.Hide();
-#endif
                 }
 
                 // Invoke the event
@@ -350,12 +344,12 @@ namespace Fluent
                 return;
             }
 
+            FrameworkElement topLevelElement;
+
             if (DesignerProperties.GetIsInDesignMode(this))
             {
                 // TODO: in design mode it is required to use design time adorner
-                var topLevelElement = (FrameworkElement)VisualTreeHelper.GetParent(this);
-                var topOffset = this.TranslatePoint(new Point(0, this.ActualHeight), topLevelElement).Y;
-                this.adorner = new BackstageAdorner(topLevelElement, this.Content, topOffset);
+                topLevelElement = (FrameworkElement)VisualTreeHelper.GetParent(this);
             }
             else
             {
@@ -365,15 +359,15 @@ namespace Fluent
                     return;
                 }
 
-                var topLevelElement = (FrameworkElement)mainWindow.Content;
-                if (topLevelElement == null)
-                {
-                    return;
-                }
-
-                var topOffset = this.TranslatePoint(new Point(0, this.ActualHeight), topLevelElement).Y;
-                this.adorner = new BackstageAdorner(topLevelElement, this.Content, topOffset);
+                topLevelElement = (FrameworkElement)mainWindow.Content;
             }
+
+            if (topLevelElement == null)
+            {
+                return;
+            }
+
+            this.adorner = new BackstageAdorner(topLevelElement, this);
 
             var layer = AdornerLayer.GetAdornerLayer(this);
             layer.Add(this.adorner);
