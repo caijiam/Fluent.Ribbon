@@ -251,9 +251,6 @@ namespace Fluent
             this.SizeChanged += this.OnSizeChanged;
 
             this.windowSizing = new WindowSizing(this);
-
-            SystemEvents.UserPreferenceChanged += OnUserPreferenceChanged;
-            UpdateTitleBarHeight();
         }
 
         #endregion
@@ -292,27 +289,6 @@ namespace Fluent
         }
 
         #endregion
-
-        private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
-        {
-            // When SystemsFont.MenuFont* changed
-            if (e.Category == UserPreferenceCategory.Window)
-            {
-                UpdateTitleBarHeight();
-            }
-        }
-
-        private void UpdateTitleBarHeight()
-        {
-            var fmt = new FormattedText(
-                "CANDIDATE",
-                CultureInfo.CurrentUICulture,
-                FlowDirection.LeftToRight,
-                new Typeface(SystemFonts.CaptionFontFamily, SystemFonts.CaptionFontStyle, SystemFonts.CaptionFontWeight, FontStretches.Normal),
-                SystemFonts.CaptionFontSize,
-                Brushes.Black);
-            RibbonProperties.SetTitleBarHeight(this, Math.Max(fmt.Height, RibbonProperties.MIN_TITLE_BAR_HEIGHT));
-        }
 
         private static void OnWindowChromeRelevantPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
