@@ -8,6 +8,12 @@
                     xmlns:Fluent="clr-namespace:Fluent"
                     xmlns:Behaviours="clr-namespace:Fluent.Metro.Behaviours">
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <Fluent:BooleanToVisibilityConverter x:Key="BooleanToVisibilityInvertedConverter"
+                                         Inverted="True"
+                                         Collapse="True" />
+    <Fluent:BooleanThicknessConverter x:Key="BooleanToContentThicknesssConverter"
+                                      ThicknessWhenTrue="0"
+                                      ThicknessWhenFalse="8,1,8,8" />
     <Fluent:IconConverter x:Key="IconConvert" />
     <BitmapImage x:Key="ImageCaptionButtonClose"
                  UriSource="pack://application:,,,/Fluent;component/Themes/Office2010/Images/CaptionButtonClose.png"
@@ -126,6 +132,8 @@
     <ControlTemplate x:Key="DwmRibbonWindowControlTemplate"
                      TargetType="{x:Type Fluent:RibbonWindow}">
         <Grid>
+            <Border Background="{DynamicResource MainGridBackgroundWhenDefaultWindowsChrome}"
+                    Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <AdornerDecorator x:Name="adornerDecorator"
                               Margin="0">
                 <Grid x:Name="PART_MainGrid"
@@ -147,6 +155,7 @@
                                 Margin="8,7,8,8"
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Left"
+                                Visibility="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToVisibilityInvertedConverter}}"
                                 VerticalAlignment="Top">
                         <Image x:Name="PART_Icon"
                                Height="16"
@@ -157,7 +166,7 @@
                                SnapsToDevicePixels="True"
                                Visibility="{TemplateBinding IsIconVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
                     </StackPanel>
-                    <ContentPresenter Margin="8,1,8,8"
+                    <ContentPresenter Margin="{TemplateBinding UseDefaultWindowsChrome, Converter={StaticResource BooleanToContentThicknesssConverter}}"
                                       x:Name="PART_ContentPresenter" />
                     <ResizeGrip x:Name="PART_ResizeGrip"
                                 Grid.Row="1"
@@ -665,6 +674,11 @@
                         Value="0,0,0,1" />
             </Trigger>
             <Trigger Property="CanUseDwm"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{DynamicResource DwmRibbonWindowControlTemplate}" />
+            </Trigger>
+            <Trigger Property="UseDefaultWindowsChrome"
                      Value="True">
                 <Setter Property="Template"
                         Value="{DynamicResource DwmRibbonWindowControlTemplate}" />

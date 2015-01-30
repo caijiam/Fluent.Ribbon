@@ -15,27 +15,29 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Fluent:RibbonTitleBar x:Name="PART_RibbonTitleBar"
-                                   Height="{Binding Path=(Fluent:RibbonProperties.TitleBarHeight), RelativeSource={RelativeSource Self}}"
-                                   Style="{DynamicResource RibbonTitleBarStyle}"
-                                   Margin="20,0,113,0"
-                                   VerticalAlignment="Top"
-                                   HorizontalAlignment="Left"
-                                   IsCollapsed="{TemplateBinding IsCollapsed}">
-                <Fluent:RibbonTitleBar.Header>
-                    <Grid>
-                        <TextBlock x:Name="PART_Title"
-                                   Padding="4,0,4,0"
-                                   VerticalAlignment="Center"
-                                   d:LayoutOverrides="Width"
-                                   HorizontalAlignment="Center"
-                                   Text="{Binding Path=Title,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                   Foreground="Black"
-                                   TextWrapping="NoWrap"
-                                   TextTrimming="CharacterEllipsis" />
-                    </Grid>
-                </Fluent:RibbonTitleBar.Header>
-            </Fluent:RibbonTitleBar>
+            <Border Visibility="{Binding Path=UseDefaultWindowsChrome, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Converter={StaticResource BooleanToVisibilityInvertedConverter}}">
+                <Fluent:RibbonTitleBar x:Name="PART_RibbonTitleBar"
+                                       Height="{Binding Path=(Fluent:RibbonProperties.TitleBarHeight), RelativeSource={RelativeSource Self}}"
+                                       Style="{DynamicResource RibbonTitleBarStyle}"
+                                       Margin="20,0,113,0"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       IsCollapsed="{TemplateBinding IsCollapsed}">
+                    <Fluent:RibbonTitleBar.Header>
+                        <Grid>
+                            <TextBlock x:Name="PART_Title"
+                                       Padding="4,0,4,0"
+                                       VerticalAlignment="Center"
+                                       d:LayoutOverrides="Width"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding Path=Title,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                       Foreground="Black"
+                                       TextWrapping="NoWrap"
+                                       TextTrimming="CharacterEllipsis" />
+                        </Grid>
+                    </Fluent:RibbonTitleBar.Header>
+                </Fluent:RibbonTitleBar>
+            </Border>
 
             <Fluent:RibbonTabControl Menu="{TemplateBinding Menu}"
                                      Style="{DynamicResource RibbonTabControlStyle}"
@@ -44,9 +46,13 @@
                                      ContextMenu="{Binding ContextMenu, ElementName=PART_LayoutRoot}">
                 <Fluent:RibbonTabControl.Margin>
                     <MultiBinding Converter="{x:Static Converters:StaticConverters.ThicknessConverter}">
+                        <!--Comment from PEK: I hate this solution :-). Is there a better way to do it?-->
+                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}"
+                                 Path="UseDefaultWindowsChrome" />
                         <Binding Source="{x:Static internal:DoubleUtil.Zero}" />
                         <Binding RelativeSource="{RelativeSource Self}"
                                  Path="(Fluent:RibbonProperties.TitleBarHeight)" />
+
                         <Binding Source="{x:Static internal:DoubleUtil.Zero}" />
                         <Binding Source="{x:Static internal:DoubleUtil.Zero}" />
                     </MultiBinding>
