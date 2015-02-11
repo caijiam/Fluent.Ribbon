@@ -49,6 +49,7 @@
         private void FixNastyWindowChromeBug()
         {
             if (this.fixingNastyWindowChromeBug
+				|| this.window.UseDefaultWindowsChrome
                 || this.window.WindowState != WindowState.Maximized)
             {
                 return;
