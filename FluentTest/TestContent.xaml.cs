@@ -18,7 +18,7 @@
     public partial class TestContent
     {
         private Theme? currentTheme;
-        private MainViewModel viewModel;
+        private readonly MainViewModel viewModel;
 
         public TestContent()
         {
@@ -402,6 +402,11 @@
         {
             var w = new Window();
             w.ShowDialog();
+        }
+
+        private void OpenRegularWindow_OnClick(object sender, RoutedEventArgs e)
+        {
+            new RegularWindow().Show();
         }
 
         private void OpenMahMetroWindow_OnClick(object sender, RoutedEventArgs e)

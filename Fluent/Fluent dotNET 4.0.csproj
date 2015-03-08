@@ -211,10 +211,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2013\Common.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Office2013\Controls\Backstage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -347,19 +343,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Include="Themes\Office2013\Controls\RibbonToolBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Office2013\Controls\RibbonSeparator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
     <None Include="Themes\Office2013\Controls\Menu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Office2013\Controls\MenuSeparator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -427,7 +415,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Include="Themes\Office2010\Controls\MenuSeparator.xaml">
+    <None Include="Themes\Generic\Controls\MenuSeparator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -435,23 +423,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\SeparatorTabItem.xaml">
+    <None Include="Themes\Generic\Controls\SeparatorTabItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\GalleryGroupContainer.xaml">
+    <None Include="Themes\Generic\Controls\GalleryGroupContainer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\RadioButton.xaml">
+    <None Include="Themes\Generic\Controls\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\RibbonMenu.xaml">
+    <None Include="Themes\Generic\Controls\RibbonMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Include="Themes\Office2010\Controls\RibbonTextBox.xaml">
+    <None Include="Themes\Generic\Controls\RibbonTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -479,11 +467,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\RibbonToolBar.xaml">
+    <None Include="Themes\Generic\Controls\RibbonToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\RibbonToolBarControlGroup.xaml">
+    <None Include="Themes\Generic\Controls\RibbonToolBarControlGroup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -503,11 +491,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\TextBox.xaml">
+    <None Include="Themes\Generic\Controls\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\TwoLineLabel.xaml">
+    <None Include="Themes\Generic\Controls\TwoLineLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -515,7 +503,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\EmptyFocusStyle.xaml">
+    <None Include="Themes\Generic\Controls\EmptyFocusStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -543,7 +531,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Controls\RibbonTitleBar.xaml">
+    <None Include="Themes\Generic\Controls\RibbonTitleBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -571,7 +559,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Office2010\Common.xaml">
+    <None Include="Themes\Generic\Common.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -595,10 +583,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <None Include="Themes\Windows8\Common.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\ApplicationMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -647,15 +631,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Windows8\Controls\EmptyFocusStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\Gallery.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\GalleryGroupContainer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -667,10 +643,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Windows8\Controls\KeyTip.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -679,15 +651,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Windows8\Controls\MenuSeparator.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\QuickAccessToolbar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -700,10 +664,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Themes\Windows8\Controls\RibbonGroupBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\RibbonMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -723,35 +683,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Windows8\Controls\RibbonTextBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\RibbonTitleBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\RibbonToolBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\RibbonToolBarControlGroup.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\ScreenTip.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\ScrollBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\ScrollBarWhite.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\SeparatorTabItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
@@ -771,15 +703,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Themes\Windows8\Controls\TextBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Themes\Windows8\Controls\ToggleButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Themes\Windows8\Controls\TwoLineLabel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
